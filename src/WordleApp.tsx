@@ -1,29 +1,24 @@
-import { useEffect, useMemo, useState } from "react"
-import { Header, LetterState, ModalIntro, WrapperRound } from "./components"
+import { useEffect, useState } from "react"
+import { AttemptRow, Header, ModalIntro } from "./components"
 
-import wordsDb from './words.json'
 import { preferColorSchema } from "./helpers"
 
 function WordleApp() {
 
-  const randomNumber = (max: number) => Math.floor(Math.random() * max)
-  const targetWords = useMemo(() => wordsDb[randomNumber(wordsDb.length)], [])
-  const arrayTargetWord = targetWords.split('')
-
   const [ darkMode, setDarkMode ] = useState<boolean>(false)
   const [ modalStart, setModalStart ] = useState<boolean>(false)
   const [ wordToMatch, setWordToMatch ] = useState<string[]>([])
-  const [ initGame, setInitGame ] = useState({
-    currenAttempt: 0,
-    round: 0,
-    maxRounds: 5
-  })
   
   const onDarkModeChange = () => setDarkMode(!darkMode)
 
   const onStartGame = () => {
     setModalStart(false)
     localStorage.setItem('gameInit', 'true')
+  }
+
+  const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {value} = e.target
+    setWordToMatch([...wordToMatch, value])
   }
 
   useEffect(() => { setModalStart(!('gameInit' in localStorage))}, [])
@@ -41,11 +36,15 @@ function WordleApp() {
           onPress={onStartGame}
         />
         <article className="max-w-[400px] mx-auto my-16 space-y-3">
-          {Array.from({ length: initGame.maxRounds }).map((_, index) => (
-            <WrapperRound
+          {Array.from({ length: 5 }).map((_, index) => (
+            <AttemptRow
               key={index} 
               attempt={
-                Array.from({ length: initGame.maxRounds }, () => ({ char: wordToMatch[index], state: LetterState.Default }))
+                Array.from({ length: 5 }, () => ({
+                  letter: wordToMatch[index] || '',
+                  status: 'bg-grey',
+                  onChange: onHandleChange
+                }))
               } 
             />
           ))}

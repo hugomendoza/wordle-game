@@ -1,5 +1,5 @@
 export * from './Button'
 export * from './Header'
 export * from './ModalIntro'
-export * from './LetterBox'
-export * from './WrapperRound'
+export * from './InputLetterBox'
+export * from './AttemptRow'
