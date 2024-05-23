@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
-import { ButtonAbc, Header, LetterState, ModalIntro, WrapperRound } from "./components"
+import { Header, LetterState, ModalIntro, WrapperRound } from "./components"
 
 import wordsDb from './words.json'
-import abc from './abc.json'
 import { preferColorSchema } from "./helpers"
 
 function WordleApp() {
@@ -25,10 +24,6 @@ function WordleApp() {
   const onStartGame = () => {
     setModalStart(false)
     localStorage.setItem('gameInit', 'true')
-  }
-
-  const onAddLetter = (letter: string) => {
-    setWordToMatch([...wordToMatch, letter])
   }
 
   useEffect(() => { setModalStart(!('gameInit' in localStorage))}, [])
@@ -55,17 +50,6 @@ function WordleApp() {
             />
           ))}
         </article>
-        <footer
-          className='flex flex-wrap text-grey-450 gap-2 p-12 bg-gray-100 dark:bg-grey-200 rounded-lg justify-center'
-        >
-          {
-            abc.map(letter =>
-              <ButtonAbc
-                key={letter}
-                value={letter}
-                onOpress={() => onAddLetter(letter)}
-            />)}
-        </footer>
       </div>
     </main>
   )
