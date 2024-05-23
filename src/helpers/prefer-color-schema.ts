@@ -1,0 +1,1 @@
+export const preferColorSchema = window.matchMedia('(prefers-color-scheme: dark)')

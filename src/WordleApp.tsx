@@ -3,6 +3,7 @@ import { ButtonAbc, Header, LetterState, ModalIntro, WrapperRound } from "./comp
 
 import wordsDb from './words.json'
 import abc from './abc.json'
+import { preferColorSchema } from "./helpers"
 
 function WordleApp() {
 
@@ -10,7 +11,7 @@ function WordleApp() {
   const targetWords = useMemo(() => wordsDb[randomNumber(wordsDb.length)], [])
   const arrayTargetWord = targetWords.split('')
 
-  const [ darkMode, setDarkMode ] = useState<boolean>(true)
+  const [ darkMode, setDarkMode ] = useState<boolean>(false)
   const [ modalStart, setModalStart ] = useState<boolean>(false)
   const [ wordToMatch, setWordToMatch ] = useState<string[]>([])
   const [ initGame, setInitGame ] = useState({
@@ -26,24 +27,12 @@ function WordleApp() {
     localStorage.setItem('gameInit', 'true')
   }
 
-  useEffect(() => {
-    setModalStart(!('gameInit' in localStorage))
-  }, [])
-
   const onAddLetter = (letter: string) => {
     setWordToMatch([...wordToMatch, letter])
   }
 
-  useEffect(() => {
-    if(wordToMatch.length < 5) return
-
-    // setInitGame({
-    //   currenAttempt: initGame.currenAttempt + 1,
-    //   round: initGame.round + 1,
-    //   maxRounds: initGame.maxRounds
-    // })
-
-  }, [wordToMatch, arrayTargetWord])
+  useEffect(() => { setModalStart(!('gameInit' in localStorage))}, [])
+  useEffect(() => setDarkMode(preferColorSchema.matches), []);
 
   return (
     <main className={`w-full min-h-screen ${darkMode && 'dark'} bg-white dark:bg-grey-700`}>
