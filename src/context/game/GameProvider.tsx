@@ -1,15 +1,15 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { GameContext } from "./GameContext"
 import { gameReducer } from "./GameReducer";
 import { preferColorSchema } from "../../helpers";
 
 export interface GameState {
-  value: string;
+  valueToMatch: string[];
   darkMode: boolean;
 }
 
 const INITIAL_STATE: GameState = {
-  value: '',
+  valueToMatch: [],
   darkMode: false
 }
 
@@ -20,6 +20,7 @@ interface Props {
 export const GameProvider = ({ children }: Props) => {
 
   const [ state, dispatch ] = useReducer(gameReducer, INITIAL_STATE)
+  const [OTP, setOTP] = useState<string[]>(new Array(length).fill(''))
 
   const setDarkMode = (darkMode: boolean) => {
     dispatch({ type: 'SET_DARK_MODE', darkMode })
@@ -30,7 +31,9 @@ export const GameProvider = ({ children }: Props) => {
   return (
     <GameContext.Provider value={{
       ...state,
-      setDarkMode
+      OTP,
+      setDarkMode,
+      setOTP
     }}>
       { children }
     </GameContext.Provider>

@@ -1,9 +1,11 @@
 import { createContext } from "react";
 
 export interface GameContextProps {
-  value: string;
+  valueToMatch: string[];
   darkMode: boolean;
-  setDarkMode: (darkMode: boolean) => void
+  OTP: string[];
+  setDarkMode: (darkMode: boolean) => void;
+  setOTP: (OTP: string[]) => void;
 }
 
 export const GameContext = createContext({} as GameContextProps)
