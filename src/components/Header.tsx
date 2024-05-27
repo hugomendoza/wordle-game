@@ -1,20 +1,20 @@
-import { IconChartBar, IconHelp, IconMoon, IconSun } from "@tabler/icons-react";
+import { IconChartBar, IconHelp, IconMoon } from "@tabler/icons-react";
+import { useContext } from "react";
+import { GameContext } from "../context";
 
 
 interface Options {
-  isDarkMode: boolean;
   onOpenInfo?: () => void;
   onOpenStats?: () => void;
-  onDarkModeChange?: () => void;
 }
 
 export const Header = (props: Options) => {
 
+  const { darkMode, setDarkMode } = useContext(GameContext)
+
   const {
     onOpenInfo,
     onOpenStats,
-    onDarkModeChange,
-    isDarkMode
   } = props
 
   return (
@@ -27,7 +27,7 @@ export const Header = (props: Options) => {
           className="grid place-items-center"
         >
           <IconHelp
-            color={`${isDarkMode ? 'white' : 'black'}`}
+            color="black"
           />
         </button>
       </div>
@@ -38,21 +38,17 @@ export const Header = (props: Options) => {
       </div>
       <div className="flex gap-2">
         <button
-          onClick={onDarkModeChange}
+          onClick={() => setDarkMode(!darkMode)}
           className="grid place-items-center"
         >
-          {
-            isDarkMode
-              ? <IconMoon color="white" />
-              : <IconSun color="black" />
-          }
+          <IconMoon color="white" />
         </button>
         <button
           onClick={onOpenStats}
           className="grid place-items-center"
         >
           <IconChartBar
-            color={`${isDarkMode ? 'white' : 'black'}`}
+            color="black"
           />
         </button>
       </div>
