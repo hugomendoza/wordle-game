@@ -5,31 +5,26 @@ type InputProps = {
   length?: number;
 }
 
-export const InputLetterBox = ({ length = 5 }: InputProps) => {
+export const OTPBox = ({ length = 5 }: InputProps) => {
 
   const inputRef = useRef<HTMLInputElement[]>(Array(length).fill(null))
   const { OTP, setOTP } = useContext(GameContext)
 
-  const onTextChange = (input:string, index:number) => {
-    const newPIN= [...OTP]
-    newPIN[index] = input
-    setOTP(newPIN)
+  const onTextChange = (input: string, index: number) => {
+    const newOTP = [...OTP];
+    newOTP[index] = input;
+    setOTP(newOTP);
 
-    if(input.length === 1 && index < length - 1) {
-      inputRef.current[index + 1]?.focus()
+    if (input.length === 1 && index < length - 1) {
+      inputRef.current[index + 1]?.focus();
+    } else if (input.length === 0 && index > 0) {
+      inputRef.current[index - 1]?.focus();
     }
-
-    if(input.length === 0 && index > 0) {
-      inputRef.current[index - 1]?.focus()
-    }
-  }
+  };
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current[0].focus();
-    }
+    inputRef.current[0]?.focus();
   }, []);
-
   console.log(OTP);
 
   return(

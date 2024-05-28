@@ -1,5 +1,6 @@
 export * from './Button'
+export * from './ButtonDarkMode'
 export * from './Header'
 export * from './ModalIntro'
-export * from './InputLetterBox'
-export * from './AttemptRow'
+// export * from './InputLetterBox'
+// export * from './AttemptRow'

@@ -1,6 +1,7 @@
-import { IconChartBar, IconHelp, IconMoon } from "@tabler/icons-react";
-import { useContext } from "react";
-import { GameContext } from "../context";
+import { IconChartHistogram, IconHelp } from "@tabler/icons-react"
+import { useContext } from "react"
+import { GameContext } from "../context"
+import { ButtonDarkMode } from "./ButtonDarkMode"
 
 
 interface Options {
@@ -10,7 +11,9 @@ interface Options {
 
 export const Header = (props: Options) => {
 
-  const { darkMode, setDarkMode } = useContext(GameContext)
+  const { darkMode } = useContext(GameContext)
+  const colorIcons = darkMode? "#DADCE0" : "#818181"
+  const sizeIcons = 28
 
   const {
     onOpenInfo,
@@ -19,38 +22,35 @@ export const Header = (props: Options) => {
 
   return (
     <header
-      className='bg-grey-100 rounded-md p-3 flex items-center justify-between dark:bg-grey-250'
+      className='bg-grey-100 rounded-md p-3 flex items-center justify-between dark:bg-grey-200 dark:bg-opacity-5'
     >
       <div>
         <button
           onClick={onOpenInfo}
-          className="grid place-items-center"
+          className="grid place-items-center mr-8"
         >
           <IconHelp
-            color="black"
+            color={colorIcons}
+            size={sizeIcons}
           />
         </button>
       </div>
       <div>
-        <h1 className="text-4xl tracking-wider font-bold text-black dark:text-grey-350">
+        <h1 className="text-4xl tracking-wider font-bold text-black dark:text-grey-200">
           WORDLE
         </h1>
       </div>
-      <div className="flex gap-2">
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="grid place-items-center"
-        >
-          <IconMoon color="white" />
-        </button>
+      <div className="flex gap-2 items-center">
         <button
           onClick={onOpenStats}
           className="grid place-items-center"
         >
-          <IconChartBar
-            color="black"
+          <IconChartHistogram
+            color={colorIcons}
+            size={sizeIcons}
           />
         </button>
+        <ButtonDarkMode />
       </div>
     </header>
   )
