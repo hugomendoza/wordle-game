@@ -1,3 +1,3 @@
 export const commonClasses = [
-  "w-16 h-16 grid place-items-center font-extrabold text-3xl rounded-lg uppercase",
+  "w-14 h-14 grid place-items-center font-extrabold text-2xl rounded-lg uppercase",
 ]

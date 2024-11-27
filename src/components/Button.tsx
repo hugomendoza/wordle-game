@@ -7,7 +7,7 @@ export const Button = ({value = '', onOpress}: Options) => {
   return (
     <button
       onClick={onOpress}
-      className="min-w-[236px] bg-green h-[50px] grey place-items-center text-2xl text-white font-extrabold rounded-md mx-auto"
+      className="min-w-[14rem] bg-green h-[3rem] grey place-items-center text-xl text-white font-extrabold rounded-md mx-auto"
     >
       {value}
     </button>

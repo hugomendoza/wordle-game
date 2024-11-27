@@ -20,11 +20,11 @@ export const ModalIntro = ({open, onPress}: Options) => {
       open={open}
     >
       <header>
-        <h2 className="text-3xl font-extrabold text-center mb-8">
+        <h2 className="text-2xl font-extrabold text-center mb-8">
           Cómo jugar
         </h2>
       </header>
-      <article className="space-y-3">
+      <article className="space-y-3 text-[0.85rem]">
         <p>
           Adivina la palabra oculta en cinco intentos.
         </p>
