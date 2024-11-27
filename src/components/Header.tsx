@@ -22,7 +22,7 @@ export const Header = (props: Options) => {
 
   return (
     <header
-      className='bg-grey-100 rounded-md p-3 flex items-center justify-between dark:bg-grey-200 dark:bg-opacity-5'
+      className='bg-grey-100 rounded-lg p-3 flex items-center justify-between dark:bg-grey-200 dark:bg-opacity-5'
     >
       <div>
         <button

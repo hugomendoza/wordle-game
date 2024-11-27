@@ -1,11 +1,11 @@
 import { createContext } from "react";
+import { Attempt } from "../../types";
 
 export interface GameContextProps {
-  valueToMatch: string[];
   darkMode: boolean;
-  OTP: string[];
+  ArrayAttemps: Attempt[];
+  round: number;
   setDarkMode: (darkMode: boolean) => void;
-  setOTP: (OTP: string[]) => void;
 }
 
 export const GameContext = createContext({} as GameContextProps)
