@@ -1,11 +1,10 @@
-import { useContext } from "react"
 import { bgDark, bgLight, switchMoon, switchSun } from "../assets"
-import { GameContext } from "../context"
+import { useWordleGameStore } from "../store"
 
 export const ButtonDarkMode = () => {
-
-  const { darkMode, setDarkMode } = useContext(GameContext)
-
+  const darkMode = useWordleGameStore((state) => state.darkMode)
+  const setDarkMode = useWordleGameStore((state) => state.setDarkMode)
+  
   return (
     <button
       className="w-[60px] h-[30px] relative rounded-full"

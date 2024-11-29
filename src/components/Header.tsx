@@ -1,24 +1,12 @@
 import { IconChartHistogram, IconHelp } from "@tabler/icons-react"
-import { useContext } from "react"
-import { GameContext } from "../context"
 import { ButtonDarkMode } from "./ButtonDarkMode"
+import { useWordleGameStore } from "../store";
 
+export const Header = () => {
 
-interface Options {
-  onOpenInfo?: () => void;
-  onOpenStats?: () => void;
-}
-
-export const Header = (props: Options) => {
-
-  const { darkMode } = useContext(GameContext)
+  const darkMode = useWordleGameStore((state) => state.darkMode)
   const colorIcons = darkMode? "#DADCE0" : "#818181"
   const sizeIcons = 28
-
-  const {
-    onOpenInfo,
-    onOpenStats,
-  } = props
 
   return (
     <header
@@ -26,7 +14,6 @@ export const Header = (props: Options) => {
     >
       <div>
         <button
-          onClick={onOpenInfo}
           className="grid place-items-center mr-8"
         >
           <IconHelp
@@ -42,7 +29,6 @@ export const Header = (props: Options) => {
       </div>
       <div className="flex gap-2 items-center">
         <button
-          onClick={onOpenStats}
           className="grid place-items-center"
         >
           <IconChartHistogram
