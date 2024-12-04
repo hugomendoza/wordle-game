@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react'
 import { useWordleGameStore } from '../store'
-import { Header } from '../components'
+import { Header, ModalIntroduction } from '../components'
 import { preferColorSchema } from '../helpers'
 
 interface GameLayoutProps {
@@ -13,20 +14,18 @@ export const GameLayout = ({children}: GameLayoutProps) => {
 
   useEffect(() => {
     setDarkMode(preferColorSchema.matches);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-
   return (
     <main
       className={`w-full min-h-screen ${darkMode && 'dark'} bg-white dark:bg-grey-700`}
     >
       <div className="max-w-[638px] mx-auto py-24">
         <Header />
-        {/* <ModalIntro
-          open={modalStart}
-          onPress={onStartGame}
-        /> */}
+        <ModalIntroduction
+          open={true}
+          onPress={() => {}}
+        />
         {children}
       </div>
     </main>

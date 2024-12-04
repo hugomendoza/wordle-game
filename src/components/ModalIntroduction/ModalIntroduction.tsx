@@ -1,19 +1,13 @@
-import { commonClasses } from "../helpers"
-import { ModalLayout } from "../Layout"
-import { Button } from "./Button"
+import { ModalLayout } from "../../Layout"
+import { firstExample, secondExample, thirdExample } from "./letters"
+import {BoxLetter} from '../BoxLetter/BoxLetter'
 
 interface Options {
   open: boolean
   onPress?: () => void
 }
 
-const firstExample: string[] = ['g', 'a', 't', 'o', 's']
-const secondExample: string[] = ['v', 'o', 'c', 'a', 'l']
-const thirdExample: string[] = ['c', 'a', 'n', 't', 'o']
-
-const boxCommonClasses = `${commonClasses} border border-black bg-white dark:bg-grey-700 dark:border-grey`
-
-export const ModalIntro = ({open, onPress}: Options) => {
+export const ModalIntroduction = ({open, onPress}: Options) => {
 
   return (
     <ModalLayout
@@ -39,21 +33,22 @@ export const ModalIntro = ({open, onPress}: Options) => {
         </p>
         <ul className="grid grid-cols-5 gap-1 text-black dark:text-white">
           {
-            firstExample.map((letter, index) => ((
-              letter === 'g' ? (  
-                <li
-                  key={index}
-                  className={`${commonClasses} border border-green bg-green`}
+            firstExample.map(({id, letter}) => ((
+              letter === 'g' ? (
+                <BoxLetter
+                  key={id}
+                  status="correct"
+                  className='border border-green bg-green'
                 >
                   {letter.toUpperCase()}
-                </li>
+                </BoxLetter>
               ) : (
-                <li
-                  key={index}
-                  className={boxCommonClasses}
+                <BoxLetter
+                  key={id}
+                  className='border border-black bg-white text-black dark:bg-grey-700 dark:text-white dark:border-grey'
                 >
                   {letter.toUpperCase()}
-                </li>
+                </BoxLetter>
               )
             )
           ))}
@@ -63,21 +58,22 @@ export const ModalIntro = ({open, onPress}: Options) => {
         </p>
         <ul className="grid grid-cols-5 gap-1">
           {
-            secondExample.map((letter, index) => ((
+            secondExample.map(({id, letter}) => ((
               letter === 'c' ? (  
-                <li
-                  key={index}
-                  className={`${commonClasses} border border-yellow bg-yellow`}
+                <BoxLetter
+                  key={id}
+                  status="present"
+                  className='border border-yellow bg-yellow'
                 >
                   {letter.toUpperCase()}
-                </li>
+                </BoxLetter>
               ) : (
-                <li
-                  key={index}
-                  className={boxCommonClasses}
+                <BoxLetter
+                  key={id}
+                  className='border border-black bg-white text-black dark:bg-grey-700 dark:text-white dark:border-grey'
                 >
                   {letter.toUpperCase()}
-                </li>
+                </BoxLetter>
               )
             )
           ))}
@@ -85,21 +81,22 @@ export const ModalIntro = ({open, onPress}: Options) => {
         <p>La letra <strong>C</strong> está en la palabra pero en la posición incorrecta.</p>
         <ul className="grid grid-cols-5 gap-1">
           {
-            thirdExample.map((letter, index) => ((
+            thirdExample.map(({id, letter}) => ((
               letter === 'o' ? (  
-                <li
-                  key={index}
-                  className={`${commonClasses} border border-grey bg-grey`}
+                <BoxLetter
+                  key={id}
+                  status="absent"
+                  className='border border-grey bg-grey'
                 >
                   {letter.toUpperCase()}
-                </li>
+                </BoxLetter>
               ) : (
-                <li
-                  key={index}
-                  className={boxCommonClasses}
+                <BoxLetter
+                  key={id}
+                  className='border border-black bg-white text-black dark:bg-grey-700 dark:text-white dark:border-grey'
                 >
                   {letter.toUpperCase()}
-                </li>
+                </BoxLetter>
               )
             )
           ))}
@@ -115,10 +112,15 @@ export const ModalIntro = ({open, onPress}: Options) => {
         </p>
       </article>
       <footer className="text-center mt-8">
-        <Button
+        {/* <Button
           value="!JUGAR¡"
           onOpress={onPress}
-        />
+        /> */}
+        <button
+          onClick={onPress}
+        >
+
+        </button>
       </footer>
     </ModalLayout>
   )
