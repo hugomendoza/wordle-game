@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react"
-import { Header, ModalIntro } from "./components"
 import { GameLayout } from "./Layout"
 
 // import data from "./db-words/words.txt"
@@ -7,10 +5,6 @@ import { GameLayout } from "./Layout"
 function WordleApp() {
 
   // const [loading, setLoading] = useState<string[]>([])
-
-  const [ modalStart, setModalStart ] = useState<boolean>(false)
-
-  useEffect(() => { setModalStart(!('gameInit' in localStorage))}, [])
   // useEffect(() => {
   //   fetch(data)
   //     .then((res) => res.text())

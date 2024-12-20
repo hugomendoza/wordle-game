@@ -1,5 +1,5 @@
 export * from './BoxLetter/BoxLetter'
-export * from './Button'
+export * from './Button/Button'
 export * from './ButtonAbc'
 export * from './ButtonDarkMode'
 export * from './Header'

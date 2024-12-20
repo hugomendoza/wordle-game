@@ -10,10 +10,11 @@ interface GameLayoutProps {
 
 export const GameLayout = ({children}: GameLayoutProps) => {
   const darkMode = useWordleGameStore((state) => state.darkMode)
-  const setDarkMode = useWordleGameStore((state) => state.setDarkMode)
+  const startGame = useWordleGameStore((state) => state.startGame)
+  const onDarkMode = useWordleGameStore((state) => state.setDarkMode)
 
   useEffect(() => {
-    setDarkMode(preferColorSchema.matches);
+    onDarkMode(preferColorSchema.matches);
   }, [])
   
   return (
@@ -23,8 +24,7 @@ export const GameLayout = ({children}: GameLayoutProps) => {
       <div className="max-w-[638px] mx-auto py-24">
         <Header />
         <ModalIntroduction
-          open={true}
-          onPress={() => {}}
+          open={!startGame}
         />
         {children}
       </div>

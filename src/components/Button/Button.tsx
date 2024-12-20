@@ -1,15 +1,14 @@
-interface Options {
-  value: string;
-  onOpress?: () => void;
-}
+import {ComponentProps} from 'react'
 
-export const Button = ({value = '', onOpress}: Options) => {
+type ButtonProps = ComponentProps<'button'>
+
+export const Button = ({...rest}: ButtonProps) => {
   return (
     <button
-      onClick={onOpress}
+      {...rest}
       className="min-w-[14rem] bg-green h-[3rem] grey place-items-center text-xl text-white font-extrabold rounded-md mx-auto"
     >
-      {value}
+      {rest.children}
     </button>
   )
 }

@@ -1,10 +1,11 @@
 import { IconChartHistogram, IconHelp } from "@tabler/icons-react"
 import { ButtonDarkMode } from "./ButtonDarkMode"
-import { useWordleGameStore } from "../store";
+import { useUi } from "../hooks";
 
 export const Header = () => {
 
-  const darkMode = useWordleGameStore((state) => state.darkMode)
+  const { darkMode, onStartGame } = useUi()
+  
   const colorIcons = darkMode? "#DADCE0" : "#818181"
   const sizeIcons = 28
 
@@ -15,6 +16,7 @@ export const Header = () => {
       <div>
         <button
           className="grid place-items-center mr-8"
+          onClick={() => onStartGame(false)}
         >
           <IconHelp
             color={colorIcons}
