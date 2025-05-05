@@ -1,5 +1,3 @@
-import { RowBoxLetter } from "./components"
-import { Button } from "./components/ui/button"
 import { GameLayout } from "./Layout"
 
 // import data from "./db-words/words.txt"
@@ -18,12 +16,9 @@ function WordleApp() {
   // }, [])
 
   return (
-    <Button
-      variant="destructive"
-      className="cursor-pointer"
-      onClick={() => {
-        console.log("click")
-      }}> Test </Button>
+    <GameLayout>
+      <h1>Hola Mundo</h1>
+    </GameLayout>
   )
 }
 

@@ -1,7 +1,6 @@
 import { ModalLayout } from "../../Layout"
 import { firstExample, secondExample, thirdExample } from "./letters"
 import {BoxLetter} from '../BoxLetter/BoxLetter'
-import { Button } from "../Button/Button"
 import { useUi } from "../../hooks"
 
 interface Options {
@@ -115,11 +114,11 @@ export const ModalIntroduction = ({open}: Options) => {
         </p>
       </article>
       <footer className="text-center mt-8">
-        <Button
+        <button
           onClick={() => onStartGame(true)}
         >
           <p>!JUGAR¡</p>
-        </Button>
+        </button>
       </footer>
     </ModalLayout>
   )

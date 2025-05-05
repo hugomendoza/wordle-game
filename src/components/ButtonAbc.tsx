@@ -1,4 +1,3 @@
-import { IconBackspace } from "@tabler/icons-react";
 import { PropsButtonAbc, StatusBoxLetter } from "../types";
 
 const commonClasses = [
@@ -26,7 +25,6 @@ export const ButtonAbc = (props: PropsButtonAbc) => {
             className={`${variantClasses}`}
             onClick={onOpress}
           >
-            <IconBackspace />
           </button>
         )
       case "enter":
