@@ -1,15 +1,11 @@
-export type StatusBoxLetter = 'initial' | 'correct' | 'present' | 'absent'
+export type LetterStatus = "initial" | "correct" | "present" | "absent";
 
-export interface PropsBoxLetter {
-  id: string;
-  status: StatusBoxLetter;
+export type BoxLetterType = {
+  id: number | string;
   letter: string;
+  status: LetterStatus;
 }
 
-export type Attempt  = PropsBoxLetter[]
-
-export interface PropsButtonAbc {
-  variant: StatusBoxLetter;
-  value: string;
-  onOpress?: () => void;
+export interface RowBoxLetterProps {
+  letters: BoxLetterType[];
 }

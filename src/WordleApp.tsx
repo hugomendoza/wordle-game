@@ -1,3 +1,4 @@
+import { WrapperRowLetter } from "./components"
 import { GameLayout } from "./Layout"
 
 // import data from "./db-words/words.txt"
@@ -17,7 +18,7 @@ function WordleApp() {
 
   return (
     <GameLayout>
-      <h1>Hola Mundo</h1>
+      <WrapperRowLetter />
     </GameLayout>
   )
 }

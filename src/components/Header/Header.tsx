@@ -8,7 +8,7 @@ export const Header = () => {
 
   return (
     <header
-      className='rounded-lg p-4 flex items-center justify-between border border-slate-50 shadow-xs dark:border-slate-700 dark:shadow-white/10'
+      className='rounded-lg p-4 flex items-center justify-between border border-slate-50 shadow-xs dark:border-slate-700 dark:shadow-white/10 mb-6'
     >
       <div>
         <Button
