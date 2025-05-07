@@ -12,13 +12,13 @@ export const WrapperRowLetter = () => {
   }, [])
   
   return (
-    <>
+    <section>
       {board.map((row) => (
         <RowBoxLetter
           key={crypto.randomUUID()}
           letters={row}
         />
       ))}
-    </>
+    </section>
   )
 }
