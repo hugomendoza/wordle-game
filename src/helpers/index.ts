@@ -1,3 +1,4 @@
 export * from './createEmptyRows'
-export * from './prefer-color-schema'
+export * from './preferColorSchema'
+export * from './selectRandomLetter'
 export * from './twMerge'
