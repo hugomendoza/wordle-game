@@ -53,7 +53,6 @@ export const createGameSlice: StateCreator<GameSlice> = (set) => ({
   updateRowPosition: () => {
     set((state) => {
       const wordSelected = state.randomWord
-      console.log(wordSelected)
       const { board, rowPosition } = state
       const typedWord = state.board[state.rowPosition].map((cell) => cell.letter).join('')
       if (typedWord === wordSelected) {

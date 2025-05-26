@@ -3,8 +3,10 @@ import { Button } from "../ui/button";
 import { ChartColumn, CircleHelp, Moon, Sun } from "lucide-react";
 
 export const Header = () => {
+  const openModalStadistics = useWordleGameStore((state) => state.openStadistics)
   const darkMode = useWordleGameStore((state) => state.darkMode)
   const setDarkMode = useWordleGameStore((state) => state.handleDarkMode)
+  const handleEstadistics = useWordleGameStore((state) => state.handleStadistics)
 
   return (
     <header
@@ -29,6 +31,7 @@ export const Header = () => {
           variant="outline"
           size="icon"
           className="text-slate-400 dark:text-slate-300"
+          onClick={() => handleEstadistics(!openModalStadistics)}
         >
           <ChartColumn />
         </Button>

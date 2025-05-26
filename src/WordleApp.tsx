@@ -1,11 +1,18 @@
-import { Keyboard, ModalIntroduction, WrapperRowLetter } from './components'
+import { Keyboard, ModalIntroduction, ModalStadistics, WrapperRowLetter } from './components'
+import { useUi } from './hooks'
 import { GameLayout } from './Layout'
 
-function WordleApp() {
 
+function WordleApp() {
+  const {startGame, openStadistics} = useUi()
   return (
     <GameLayout>
-      <ModalIntroduction open={true} />
+      <ModalIntroduction
+        open={startGame}
+      />
+      <ModalStadistics
+        open={openStadistics}
+      />
       <WrapperRowLetter />
       <Keyboard />
     </GameLayout>
