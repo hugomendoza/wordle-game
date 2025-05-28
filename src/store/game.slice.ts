@@ -7,10 +7,14 @@ export interface GameSlice {
   rowPosition: number;
   letterPosition: number;
   randomWord: string;
+  coincidences: number;
+  rounds: number;
   initializeBoard: () => void;
   updateLetter: (letter:string) => void;
   updateRowPosition: () => void;
-  setRandomWord: () => void
+  setRandomWord: () => void;
+  increseCoincidences: () => void;
+  increseRounds: () => void;
 }
 
 export const createGameSlice: StateCreator<GameSlice> = (set) => ({
@@ -18,6 +22,10 @@ export const createGameSlice: StateCreator<GameSlice> = (set) => ({
   rowPosition: 0,
   letterPosition: 0,
   randomWord: '',
+  coincidences: 0,
+  rounds: 0,
+  increseCoincidences: () => set((state) => ({coincidences: state.coincidences + 1})),
+  increseRounds: () => set((state) => ({rounds: state.rounds + 1})),
   setRandomWord: async () => {
     const setRandomWord = await selectRandomLetter() as string
     set(() => ({ randomWord: setRandomWord }))
@@ -25,6 +33,8 @@ export const createGameSlice: StateCreator<GameSlice> = (set) => ({
   initializeBoard: () => {
     set(() => ({
       board: Array.from({ length: 5 }).map(() => createEmptyRows(5)),
+      rowPosition: 0,
+      letterPosition: 0,
     }))
   },
   updateLetter: (letter: string) => {
@@ -65,6 +75,8 @@ export const createGameSlice: StateCreator<GameSlice> = (set) => ({
         })
         return {
           board: updatedBoard as BoxLetterType[][],
+          coincidences: state.coincidences + 1,
+          rounds: state.rounds + 1
         }
       }
 

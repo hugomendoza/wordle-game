@@ -8,6 +8,8 @@ interface Options {
 export const ModalStadistics = ({open}: Options) => {
 
   const closeModalStadistics = useWordleGameStore((state) =>state.handleStadistics)
+  const coincidences = useWordleGameStore((state) => state.coincidences)
+  const rounds = useWordleGameStore((state) => state.rounds)
 
   return (
     <ModalLayout
@@ -21,7 +23,7 @@ export const ModalStadistics = ({open}: Options) => {
           <p
             className="text-2xl"
           >
-            <strong>0</strong>
+            <strong>{rounds}</strong>
           </p>
           <p>
             Jugadas
@@ -31,7 +33,7 @@ export const ModalStadistics = ({open}: Options) => {
           <p
             className="text-2xl"
           >
-            <strong>0</strong>
+            <strong>{coincidences}</strong>
           </p>
           <p>
             Victorias
